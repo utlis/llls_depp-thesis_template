@@ -1,8 +1,12 @@
 # LLLS/DEPP Thesis Template
 
-The thesis template files of the following course in the University of Tokyo:
+**THESIS TEMPLATES IN THIS REPOSITORY ARE UNOFFICIAL**
 
-- Division of Lifelong Learning Infrastructure Management, Graduate School of education
+**このリポジトリの論文テンプレートはまだ非公式です**
+
+The thesis template files of the following courses
+
+- Division of Lifelong Learning Infrastructure Management, Graduate School of Education
 - Division of Educational Practices and Policies, Faculty of Education
 
 東京大学の以下のコースのための学位論文テンプレート集です。
