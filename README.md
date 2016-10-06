@@ -19,7 +19,7 @@ The thesis template files of the following courses in the University of Tokyo:
 学位論文の執筆においてはどちらを利用しても構いません（体裁は同じになります）。
 が、強く **LaTeX** を利用した執筆を推奨します。
 
-[ZIPファイルのダウンロード](#)
+[ZIPファイルのダウンロード](https://github.com/utlis/llls_depp-thesis_template/releases/tag/v2015)
 
 対応するフォルダに当該形式のテンプレートが入っています。
 テンプレートはそのまま執筆要綱を兼ねていますので、よく読んで執筆を進めてください。
