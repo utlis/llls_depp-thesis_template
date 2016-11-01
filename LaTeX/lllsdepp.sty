@@ -7,17 +7,17 @@
 
 % 章タイトルを1行にまとめる（対word互換）
 \def\@makechapterhead#1{
-  \vspace*{2\Cvs}
-  {\parindent \z@ \raggedright \normalfont
-    \Huge\headfont
-    \ifnum \c@secnumdepth >\m@ne
-      \if@mainmatter
-        \@chapapp\thechapter\@chappos
-        \hskip1zw
-      \fi
-    \fi
-    #1\par\nobreak
-  \vskip 3\Cvs}%
+	\vspace*{2\Cvs}
+	{\parindent \z@ \raggedright \normalfont
+		\Huge\headfont
+		\ifnum \c@secnumdepth >\m@ne
+			\if@mainmatter
+				\@chapapp\thechapter\@chappos
+				\hskip1zw
+			\fi
+		\fi
+		#1\par\nobreak
+	\vskip 3\Cvs}%
 }
 
 % 見出しの欧文も太字ゴシックにする
@@ -32,27 +32,27 @@
 \newcommand*{\thesisTitle}[1]{\gdef\@thesisTitle{#1}}
 \newcommand*{\thesisSubTitle}[1]{\gdef\@thesisSubTitle{#1}}
 \renewcommand{\maketitle}{%
-  \begin{titlepage}
-  	\centering \large \@thesisNendo 年度 \;
-    \ifthenelse{\equal{\@thesisClass}{教育学研究科}}{修士}{卒業}論文
-  	\par \vspace{10zh}
-  	\LARGE \textbf{\@thesisTitle} \par \medskip
-    \ifthenelse{\isundefined{\@thesisSubTitle}}
-      {}{\Large ---\,\@thesisSubTitle\,---}
-  	\normalsize \par \vspace*{\fill}
-    \ifthenelse{\equal{\@thesisClass}{教育学研究科}}{
-    	東京大学大学院　教育学研究科\\
-    	総合教育科学専攻\\
-    	生涯学習基盤経営コース\\
-    }{
-      東京大学　教育学部\\
-      総合教育科学科\\
-      教育実践・政策学コース\\
-    } \medskip
-    \@thesisAuthorID\\
-    \Large \emph{\@thesisAuthor} \normalsize \medskip\\
-    指導教員：\@thesisTeacher
-  \end{titlepage}
+	\begin{titlepage}
+		\centering \large \@thesisNendo 年度 \;
+		\ifthenelse{\equal{\@thesisClass}{教育学研究科}}{修士}{卒業}論文
+		\par \vspace{10zh}
+		\LARGE \textbf{\@thesisTitle} \par \medskip
+		\ifthenelse{\isundefined{\@thesisSubTitle}}
+			{}{\Large ---\,\@thesisSubTitle\,---}
+		\normalsize \par \vspace*{\fill}
+		\ifthenelse{\equal{\@thesisClass}{教育学研究科}}{
+			東京大学大学院　教育学研究科\\
+			総合教育科学専攻\\
+			生涯学習基盤経営コース\\
+		}{
+			東京大学　教育学部\\
+			総合教育科学科\\
+			教育実践・政策学コース\\
+		} \medskip
+		\@thesisAuthorID\\
+		\Large \emph{\@thesisAuthor} \normalsize \medskip\\
+		指導教員：\@thesisTeacher
+	\end{titlepage}
 }
 
 \makeatother
@@ -63,56 +63,58 @@
 % パッケージの読み込み順が問題となる場合のみ、適宜変更してよい
 
 % ==== GENRAL ====
-\usepackage[dvipdfmx]{graphicx}  % 画像の挿入
-\usepackage{ifthen}  % タイトルページの条件分岐に使用
+\usepackage[dvipdfmx]{graphicx}	% 画像の挿入
+\usepackage{ifthen}	% タイトルページの条件分岐に使用
 
 % ==== FONT ====
-\usepackage[T1]{fontenc}  % 8bitフォント
-\usepackage[utf8]{inputenc}  % UTF-8固定 ウムラウトなど普通に打ってよい
+\usepackage[prefernoncjk]{pxcjkcat}	% uplatexでの特殊欧文フォントが全角になるのを防ぐ
+\usepackage[utf8]{inputenc}	% UTF-8固定 ウムラウトなど普通に打ってよい
+\usepackage[T1]{fontenc}	% 8bitフォント
+\usepackage[japanese]{babel}
 
 % === Times New Roman improved ===
 \usepackage[defaultsups]{newtxtext}
 \usepackage{newtxmath}
 \usepackage[zerostyle=d]{newtxtt}
 
-\usepackage{textcomp}  % 記号の拡張。読み込み順が原因でエラーをよく吐くので適宜並び替えてよい
-\usepackage[scaled]{helvet}  % 見出し英数字をHelveticaに
+\usepackage{textcomp}	% 記号の拡張。読み込み順が原因でエラーをよく吐くので適宜並び替えてよい
+\usepackage[scaled]{helvet}	% 見出し英数字をHelveticaに
 
 % 和文フォントの高機能化
 %% 丸数字などの提供と和文フォントの太字を利用可にする
 %% boldオプションにより太字が全てゴシック太字になる（明朝太字は使わない）
-\usepackage[bold]{otf}
+% \usepackage[bold,uplatex]{otf}
 
 % ==== UTILITY ====
-\usepackage{okumacro}  % 奥村晴彦のマクロ、ときどき便利
-\usepackage[hyphens]{url}  % \url 命令の提供
+\usepackage{okumacro}	% 奥村晴彦氏のマクロ、ときどき便利
+\usepackage[hyphens]{url}	% \url 命令の提供
 \usepackage{warning}
 
 % 引用をスマートにする。入れ子になったときのかぎかっこの使い分けが自動に。
 % \textquote, \blockquote
-\usepackage[strict]{csquotes}
+\usepackage[strict,style=english]{csquotes}
 \renewcommand*{\mkcitation}[1]{ #1 }
 % 以下、日本語向け設定
-  % \DeclareQuoteStyle{japanese}
-  %   {「}
-  %   {」}
-  %   {『}
-  %   {』}
-  % \setquotestyle{japanese}
+	\DeclareQuoteStyle{japanese}
+		{「}
+		{」}
+		{『}
+		{』}
+	\setquotestyle{japanese}
 
 % ==== BIBILIOGRAPHY ====
 \usepackage{natbib}
 % \citep => (著者性, 出版年), \citet => 著者性 (出版年)
-\bibliographystyle{jecon_mine}  % 経済学向け参考文献スタイル
+\bibliographystyle{jecon_custom}	% 経済学向け参考文献スタイル
 
 %% PDFに目次をつける
 \usepackage[dvipdfmx,bookmarksnumbered=true]{hyperref}
 \usepackage[hyperpageref]{backref}
-\usepackage{notoccite}  % 目次での引用を無効化。参考文献順が引用順であるときに
+\usepackage{notoccite}	% 目次での引用を無効化。参考文献順が引用順であるときに
 
 %% 脚注番号を章でまたいで連番とする
 \usepackage{chngcntr}
-  \counterwithout*{footnote}{chapter}
+	\counterwithout*{footnote}{chapter}
 
 
 % ===== USER PACKAGES =====
@@ -121,13 +123,12 @@
 
 % 例：便利なパッケージ
 % 使い方はパッケージ名で検索したり、ドキュメントを読むことを推奨
-\usepackage{booktabs}  % 表をきれいに整形できる
-\usepackage{multirow}  % 表のセルを結合できる
-\usepackage{ascmac}  % 文章に囲みをつけられる
+\usepackage{booktabs}	% 表をきれいに整形できる
+\usepackage{multirow}	% 表のセルを結合できる
+\usepackage{ascmac}	% 文章に囲みをつけられる
 % 下書きの最中に活躍するパッケージ
-\usepackage[dvistyle,textsize=tiny]{todonotes}  % TODOをPDFに表示。先生との面談にも使える
-% \usepackage{refcheck}  % 使われていないlabelを表示
-% \usepackage[notref,notcite]{showkeys}  % labelのキーをPDFにも表示
+% \usepackage{refcheck}	% 使われていないlabelを表示
+% \usepackage[notref,notcite]{showkeys}	% labelのキーをPDFにも表示
 
 %% 独自ヘッダーの定義、100ページ以上になって両面印刷したいときにいじるとよい
 % \usepackage{fancyhdr}
@@ -146,9 +147,9 @@
 % 人工知能学会の倍角ダッシュ \ddash
 %% 本文に使うダッシュはこちらがおすすめ
 \makeatletter
-  \def\ddash{\protect\@ddash}
-  \def\@ddash{\raisebox{.3zw}[0pt]{\hbox to2zw{\hss\hskip.1zw
-  \rule{1.8zw}{.04zw}\hskip.1zw\hss}}}
+	\def\ddash{\protect\@ddash}
+	\def\@ddash{\raisebox{.3zw}[0pt]{\hbox to2zw{\hss\hskip.1zw
+	\rule{1.8zw}{.04zw}\hskip.1zw\hss}}}
 \makeatother
 
 
@@ -159,18 +160,18 @@
 % \cref で引用することで、label先に合わせて補完をしてくれる
 % 終わりの方に置かないと不具合を起こす
 \usepackage[noabbrev]{cleveref}
-  \crefformat{part}{第~#2#1#3~部}
-  \crefformat{chapter}{第~#2#1#3~章}
-  \crefformat{section}{#2#1#3~節}
-  \crefformat{subsection}{#2#1#3~項}
-  \crefname{figure}{図}{図}
-  \crefname{table}{表}{表}
-  \crefname{equation}{式}{式}
-  \crefname{appendix}{付録}{付録}
-  \crefname{enumi}{項番}{項番}
-  \newcommand{\crefpairconjunction}{, }
-  \newcommand{\crefmiddleconjunction}{, }
-  \newcommand{\creflastconjunction}{, }
+	\crefformat{part}{第~#2#1#3~部}
+	\crefformat{chapter}{第~#2#1#3~章}
+	\crefformat{section}{#2#1#3~節}
+	\crefformat{subsection}{#2#1#3~項}
+	\crefname{figure}{図}{図}
+	\crefname{table}{表}{表}
+	\crefname{equation}{式}{式}
+	\crefname{appendix}{付録}{付録}
+	\crefname{enumi}{項番}{項番}
+	\newcommand{\crefpairconjunction}{, }
+	\newcommand{\crefmiddleconjunction}{, }
+	\newcommand{\creflastconjunction}{, }
 
 % hyperrefをjsclassesで使う時のバグを修正
 % cleverefの後でないと機能しない模様

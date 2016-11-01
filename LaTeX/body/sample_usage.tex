@@ -1,10 +1,10 @@
-%! TEX root = ../thesis_guideline.tex
+%! TEX root = ../thesis_main_sample.tex
 
 \chapter{テンプレート使用方法}
 	\label{chp:readme}
 
 	\section{ファイル構成}
-	  \label{sec:contents}
+		\label{sec:contents}
 
 		本テンプレートは下記のような構成となっている。
 
@@ -13,32 +13,32 @@
 			\item thesis\_guideline.pdf: この要綱のファイル
 			\item \textbf{LaTeX/}
 			\begin{itemize}
-			  \item thesis\_main.tex: 自分の論文はこのファイルに書くとよい
-			  \item thesis\_main\_guideline.tex: この要綱の tex ソースファイル
+				\item thesis\_main.tex: 自分の論文はこのファイルに書くとよい
+				\item thesis\_main\_guideline.tex: この要綱の tex ソースファイル
 				\item ThesisTemp.bib: BibTeXによる参考文献リストファイル
 				\item jecon\_custom.bst: BibTeX用の参考文献スタイルファイル
 				\item latexmkrc: latexmkによる自動コンパイルの設定ファイル
-			  \item lllsdepp.sty: この要綱のスタイルファイル
-			  \item \textbf{fig/}: 画像ファイルの格納場所
-			    \begin{itemize}
-						\item sample\_fig.pdf: サンプル画像（\cref{fig:sample}）
+				\item lllsdepp.sty: この要綱のスタイルファイル
+				\item \textbf{fig/}: 画像ファイルの格納場所
+					\begin{itemize}
+						\item Lenna.png: サンプル画像（\cref{fig:sample}）
 						\item sample\_fig.xbb: サンプル画像用バウンディンボックスファイル
 							\footnote{画像ファイルの大きさについて記述されている}
-			    \end{itemize}
+					\end{itemize}
 				\item \textbf{body/}: 本文のtexソースを置く場所
-			    \begin{itemize}
+					\begin{itemize}
 						\item sample\_guideline.tex
 						\item sample\_usage.tex
-			    \end{itemize}
-			  \item \textbf{appendix/}: 付録のtexソースを置く場所
-			    \begin{itemize}
-				    \item sample\_appendix.tex
-			    \end{itemize}
-		  \end{itemize}
+					\end{itemize}
+				\item \textbf{appendix/}: 付録のtexソースを置く場所
+					\begin{itemize}
+						\item sample\_appendix.tex
+					\end{itemize}
+			\end{itemize}
 			\item \textbf{Word/}: Word版テンプレート
-			  \begin{itemize}
-				  \item thesis.docx: Wordを用いる場合はこのファイルに執筆
-			  \end{itemize}
+				\begin{itemize}
+					\item thesis.docx: Wordを用いる場合はこのファイルに執筆
+				\end{itemize}
 		\end{itemize}
 
 		\noindent
@@ -55,7 +55,7 @@
 		本テンプレートは、\texttt{thesis\_main.tex}を論文の骨格の記述に用い、章ごとに分割された tex ソースファイルを本文(\texttt{body})と付録(\texttt{appendix})で区別して管理する構成となっている。
 
 		\subsection{スタイルファイル}
-		  \label{sub:style_file}
+			\label{sub:style_file}
 
 			\texttt{lllsdepp.sty}が\cref{chp:guideline}で指定した体裁を再現する。
 			すでに多数のマクロ・パッケージが読み込まれている状態であるが、執筆において使用したいマクロ・パッケージがある場合はこの\texttt{lllsdepp.sty}の該当箇所において直接宣言してほしい。
@@ -68,26 +68,28 @@
 			% このときの左右余白やヘッダー・フッターのレイアウトは適宜変更して見やすくすること（デフォルトは汚い）。
 
 		\subsection{メインファイル}
-		  \label{sub:メインファイル}
+			\label{sub:メインファイル}
 
 			\texttt{thesis\_main.tex}には、表紙に記入すべき情報と各章のtexソースの読み込み順を記述する。
 			まず、8行目から次のような記述があるので、指示に従って執筆者自身の情報に書き換える
 			\footnote{提出年度を自動化しないのは、当該年度以降に学位論文texソースをコンパイルしたときに提出年度が上書きされるのを嫌うため。}。
 
+			\small
 			\begin{verbatim}
 				% ===== 執筆者記入事項 ここから =====
-				\thesisNendo{201x}  % 提出年度
+				\thesisNendo{201x}	% 提出年度
 				\thesisClass% 所属　下記2行のうち当てはまる方をコメントイン
-				% {教育学部}  % 卒業論文
-				{教育学研究科}  % 修士論文
-				\thesisAuthor{本郷　弥生}  % あなたのお名前（姓名は全角スペースで分ける）
-				\thesisAuthorID{23-000000}  % あなたの学籍番号（半角）
-				\thesisTitle{教育学研究科・教育学部学位論文執筆要綱}  % 論文題目
+				% {教育学部}	% 卒業論文
+				{教育学研究科}	% 修士論文
+				\thesisAuthor{本郷　弥生}	% あなたのお名前（姓名は全角スペースで分ける）
+				\thesisAuthorID{23-000000}	% あなたの学籍番号（半角）
+				\thesisTitle{教育学研究科・教育学部学位論文執筆要綱}	% 論文題目
 				% サブタイトルがなければ下の行をコメントアウト
-				\thesisSubTitle{生涯学習基盤経営コース・教育実践政策学コース向け}  % サブタイトル（ダッシュなし）
-				\thesisTeacher{浅野 柏子　教授}  % 姓[半角スペース]名[全角スペース]職階
+				\thesisSubTitle{生涯学習基盤経営コース・教育実践政策学コース向け}	% サブタイトル（ダッシュなし）
+				\thesisTeacher{浅野 柏子　教授}	% 姓[半角スペース]名[全角スペース]職階
 				% ===== 執筆者記入事項 ここまで =====
 			\end{verbatim}
+			\normalsize
 
 			各章のtexソースは、執筆者の章立てにおいて意図する順番に \texttt{\textbackslash include} コマンドで読み込む。
 			章の入れ替えが楽になるほか、1つのファイルが大きくなりすぎてエディタで扱いづらくなることを防ぐ。
@@ -108,7 +110,7 @@
 			OSごとの実行コマンドの違いはこの\texttt{latexmkrc}が吸収しているので、執筆者は不具合のない限り \texttt{latexmkrc}の存在を意識する必要はない。
 
 		\subsection{執筆}
-		  \label{sub:writing}
+			\label{sub:writing}
 
 			実際の執筆において本テンプレートが推奨するコマンドを説明する。
 
@@ -129,7 +131,7 @@
 					\item[Block] 　
 					\begin{verbatim}
 						\begin{displaycquote}[<ページ番号;例: p. 74>]{<引用キー;例: sawada>}
-						  ...
+							...
 						\end{displaycquote}
 					\end{verbatim}
 				\end{description}
@@ -169,7 +171,7 @@
 		それ未満のバージョンにおける動作不良は一切サポートしない。
 
 		\subsection{表紙}
-		  \label{sub:titlepage_w}
+			\label{sub:titlepage_w}
 
 			まず表紙に執筆者情報を記入する。
 			提出年度、及び執筆する学位論文の種類に応じて「修士論文」「卒業論文」を選んで記入せよ。
@@ -178,13 +180,13 @@
 			名前、学籍番号、指導教員も忘れずに記入する。
 
 		\subsection{スタイル}
-		  \label{sub:style_w}
+			\label{sub:style_w}
 
 			本文に適用するスタイルは、スタイル選択から適切なものを選ぶこと。
 			「見出し1--3」が章・節・項に対応しているほか、「ブロック引用」を用意している。
 
 		\subsection{執筆}
-		  \label{sub:writing_w}
+			\label{sub:writing_w}
 
 			章の最後には必ず改ページを挿入し、次の章が新しいページから始まるようにせよ。
 			適宜目次は手動で更新してほしい。
@@ -196,7 +198,7 @@
 			以下、あまり知られていないWordの使い方を列挙する。
 			詳しい使い方は各自調べてほしい。
 
-		  \paragraph{図表番号の付け方}
+			\paragraph{図表番号の付け方}
 
 				[参照設定] タブの [図表番号] グループで、[図表番号の挿入] が可能だそうである。
 				これにより、図表番号が自動で連番となる。
