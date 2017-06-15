@@ -144,10 +144,10 @@
 			\subsubsection{参照}
 
 				ふつう、節や図表で付与した\verb|\label|を\verb|\ref|コマンドで参照するところ、本テンプレートでは\verb|\cref|を使うと記述が楽になる。
-				この\verb|\cref|というコマンドは\texttt{creveref}によって提供されるもので、\texttt{lllsdepp.sty}ではこれを日本語向けに設定してある。
+				この\verb|\cref|というコマンドは\texttt{cleveref}によって提供されるもので、\texttt{lllsdepp.sty}ではこれを日本語向けに設定してある。
 
-				例えば、章番号を引用するときに通常の\verb|\ref|を用いた場合だと\verb|第\ref{chp:hoge}章|と入力しなければならないが、\texttt{creveref}を使うと、\verb|\cref{chp:hoge}|だけで済むようになるのである。
-				\texttt{creveref}は\verb|\label|の貼られた場所がどういう環境であるかを自動で識別し、そこが章や節であれば「第n章」、「n.m節」などと補完し、図表であれば「図n」「表m」と表示することができる。
+				例えば、章番号を引用するときに通常の\verb|\ref|を用いた場合だと\verb|第\ref{chp:hoge}章|と入力しなければならないが、\texttt{cleveref}を使うと、\verb|\cref{chp:hoge}|だけで済むようになる。
+				さらに\texttt{cleveref}は\verb|\label|の貼られた場所がどういう環境であるかを自動で識別し、そこが章や節であれば「第n章」、「n.m節」などと補完し、図表であれば「図n」「表m」と表示することができるので、あらゆるラベル参照を\texttt{cleveref}で代用することが出来る。
 
 
 			\subsection{参考文献}
@@ -155,12 +155,14 @@
 
 				本テンプレートではpBibTeXを用いた参考文献処理が組み込まれている。
 				したがって執筆者はBibTeX形式で参考文献リストを準備するのがよい。
-				また、参考文献スタイルとして（本テンプレートの指定とは異なり）経済学の標準的な形式を再現した \texttt{jecon}\footurl{http://shirotakeda.org/ja/tex-ja/jecon-ja.html}を元にしたものを適用しており、和書・洋書が混在した参考文献リストが見やすく出力されるようになっている。
+				また、参考文献スタイルとして（本テンプレートの指定とは異なり）経済学の標準的な形式を再現した \texttt{jecon}\footurl{http://shirotakeda.org/ja/tex-ja/jecon-ja.html}を元にいくつかのオプションを変更した\texttt{jecon\_custom.bst}を採用しており、和書・洋書が混在した参考文献リストが見やすく出力されるようになっている。
 				本テンプレートの\texttt{jecon\_custom.bst}は文献管理ソフトウェア \texttt{Mendeley} \footurl{https://www.mendeley.com}で出力できるBibTeX形式に準拠しており、とくに和文書籍・論文を \texttt{CiNII}\footurl{http://ci.nii.ac.jp}から \texttt{Mendeley} へとエクスポートしたときのBibTeXフォーマットにおいても著者の姓名が正しい順番に揃うように改変してある。
 
 				したがって執筆者は \texttt{Mendeley} を用いた文献管理を行いつつ、そのデスクトップアプリケーションから出力したBibTeXファイル
-				\footnote{詳しい方法は公式ドキュメントなどを参照されたい。(\url{https://blog.mendeley.com/2011/10/25/howto-use-mendeley-to-create-citations-using-latex-and-bibtex/})}
+				\footnote{詳しい方法は公式ドキュメントなどを参照されたい
+				(\url{https://blog.mendeley.com/2011/10/25/howto-use-mendeley-to-create-citations-using-latex-and-bibtex/})。}
 				を本テンプレートの\texttt{ThesisTemp.bib}と同じ階層に置くことで、快適な参考文献処理が行えるのである。
+				ただし、BibTeXファイルをその他の方法で独自に管理していて日本人著者の姓名が逆に表示される場合は、\verb|jecon_custom.bst|の168行目から始まるオプションを0に変更せよ。
 
 	\section{Word}
 		\label{word}
