@@ -190,8 +190,8 @@ FUNCTION {bst.first.name.initial}
 % 字ならなにも変わらない)。
 %
 FUNCTION {bst.title.lower.case}
-{ #0 }    % #0 なら小文字に変換しない (そのまま)  (default)
-% { #1 }    % #0 以外なら、小文字に変換する。
+% { #0 }    % #0 なら小文字に変換しない (そのまま)  (default)
+{ #1 }    % #0 以外なら、小文字に変換する。
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -566,12 +566,14 @@ FUNCTION {bst.book.post}
 % book の title 前に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.book.pre.jp}
-{ "『" }    % (default)
+% { "『" }    % (default)
+{ "" }
 
 % book の title 後に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.book.post.jp}
-{ "』" }    % (default)
+% { "』" }    % (default)
+{ ". " }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	booktitle
@@ -844,12 +846,14 @@ FUNCTION {bst.publisher.post}
 % publisher の前に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.publisher.pre.jp}
-{ "，" }    % (default)
+% { "，" }    % (default)
+{ "" }
 
 % publisher の後に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.publisher.post.jp}
-{ "" }    % (default)
+% { "" }    % (default)
+{ ", " }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	series
@@ -867,12 +871,14 @@ FUNCTION {bst.series.post}
 % series の前に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.series.pre.jp}
-{ "，" }    % (default)
+% { "，" }    % (default)
+{ ", (" }
 
 % series の後に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.series.post.jp}
-{ "" }    % (default)
+% { "" }    % (default)
+{ ")" }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	organization
@@ -2312,7 +2318,7 @@ FUNCTION {format.book.pages}
 { pages empty$
     { "" }
     { is.kanji.entry
-        { bst.page.pre.jp pages convert.num.pages * bst.page.post.jp * }
+        { ", " pages convert.num.pages * "p." * }
         { bst.pages.pre pages * bst.pages.post * }
       if$
     }
@@ -3151,17 +3157,19 @@ FUNCTION {book}
   if$
   format.book "title" output.check.nocomma
 
-  format.bvolume output.nocomma
-  format.number.series output.nocomma
   output.publisher.address
-
-  format.edition output.nocomma
-  format.book.pages output.nocomma
 
   bst.year.position #0 = not
     { format.year "year" output.check.nocomma }
     'skip$
   if$
+
+  format.book.pages output.nocomma
+
+  format.bvolume output.nocomma
+  format.number.series output.nocomma
+
+  format.edition output.nocomma
 
   format.hoyakusho output.nocomma
   format.url output.nocomma
