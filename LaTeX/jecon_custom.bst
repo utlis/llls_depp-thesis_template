@@ -311,9 +311,9 @@ FUNCTION {bst.tatebo.definition}
 % #3 -> year は volume の後に表示されます。
 %
 FUNCTION {bst.year.position}
-{ #0 }    % author のすぐ後 (default).
+% { #0 }    % author のすぐ後 (default).
 % { #1 }    % 最後（note の前）
-% { #2 }    % journal name の後（article entryのみ）
+{ #2 }    % journal name の後（article entryのみ）
 % { #3 }    % volume の後（article entryのみ）
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -391,21 +391,24 @@ FUNCTION {bst.notuse.order.field}
 % "Mr.A _ Mr.B " の "_" の部分に入る文字列
 %
 FUNCTION {bst.and}
-{ " and " }    % (default)
+% { " and " }    % (default)
+{ "; " }
 
 %%% 三人以上の authors, editors の間の文字列
 %
 % "Mr.A, Mr.B _ Mr.C" の "_" の部分に入る文字列
 %
 FUNCTION {bst.ands}
-{ ", and " }    % (default)
+% { ", and " }    % (default)
+{ "; " }
 
 % 複数の authors, editors の間の文字列 (日本語文献用)
 %
 % "A氏 _ B氏 _ C氏" の "_" の部分に入る文字列
 %
 FUNCTION {bst.and.jp}
-{ "・" }    % (default)
+% { "・" }    % (default)
+{ ", " }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%	「引用部分」での author 名の間に入る文字列
@@ -464,7 +467,8 @@ FUNCTION {bst.author.pre}
 % author の後に付ける文字列 (英語文献用)
 %
 FUNCTION {bst.author.post}
-{ "" }    % (default)
+% { "" }    % (default)
+{ ". " }
 
 % author の前に付ける文字列 (日本語文献用)
 %
@@ -474,7 +478,8 @@ FUNCTION {bst.author.pre.jp}
 % author の後に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.author.post.jp}
-{ "" }    % (default)
+% { "" }    % (default)
+{ ". " }
 
 %%% 日本語文献の author, editor の姓・名の間に入れる文字列
 % (姓名のどちらか一方が一文字のケース)
@@ -497,22 +502,26 @@ FUNCTION {bst.sei.mei.two.jp}
 % year の前に付ける文字列 (英語文献用)
 %
 FUNCTION {bst.year.pre}
-{ " (" }    % (default)
+% { " (" }    % (default)
+{ "" }
 
 % year の後に付ける文字列 (英語文献用)
 %
 FUNCTION {bst.year.post}
-{ ") " }    % (default)
+% { ") " }    % (default)
+{ "" }
 
 % year の前に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.year.pre.jp}
-{ " (" }    % (default)
+% { " (" }    % (default)
+{ "" }
 
 % year の後に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.year.post.jp}
-{ ") " }    % (default)
+% { ") " }    % (default)
+{ "" }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	title (book 以外)
@@ -520,22 +529,26 @@ FUNCTION {bst.year.post.jp}
 % title の前に付ける文字列 (英語文献用)
 %
 FUNCTION {bst.title.pre}
-{ "``" }    % (default)
+% { "``" }    % (default)
+{ "" }
 
 % title の後に付ける文字列 (英語文献用)
 %
 FUNCTION {bst.title.post}
-{ ",''" }    % (default)
+% { ",''" }    % (default)
+{ ". " }
 
 % title の前に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.title.pre.jp}
-{ "「" }    % (default)
+% { "「" }    % (default)
+{ "" }
 
 % title の後に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.title.post.jp}
-{ "」，" }    % (default)
+% { "」，" }    % (default)
+{ ". " }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	book 用 title
@@ -594,17 +607,20 @@ FUNCTION {bst.journal.pre}
 % journal name の後に付ける文字列 (英語文献用)
 %
 FUNCTION {bst.journal.post}
-{ "}" }    % (default)
+% { "}" }    % (default)
+{ "}. " }
 
 % journal name の前に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.journal.pre.jp}
-{ "『" }    % (default)
+% { "『" }    % (default)
+{ "" }
 
 % journal name の後に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.journal.post.jp}
-{ "』" }    % (default)
+% { "』" }    % (default)
+{ ". " }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	editor 記号
@@ -654,7 +670,8 @@ FUNCTION {bst.edition.post.jp}
 %
 FUNCTION {bst.volume.pre}
 % { ", Vol. " }    % (default)
-{ ", Vol.~" }    % (default)
+% { ", Vol.~" }    % (default)
+{ ", vol.~" }
 
 % volume の後に付ける文字列 (英語文献用)
 %
@@ -664,12 +681,14 @@ FUNCTION {bst.volume.post}
 % volume の前に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.volume.pre.jp}
-{ "，第~" }    % (default)
+% { "，第~" }    % (default)
+{ ", vol.~" }
 
 % volume の後に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.volume.post.jp}
-{ "~巻" }    % (default)
+% { "~巻" }    % (default)
+{ "" }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	number
@@ -677,7 +696,8 @@ FUNCTION {bst.volume.post.jp}
 % number の前に付ける文字列 (英語文献用)
 %
 FUNCTION {bst.number.pre}
-{ ", No.~" }    % (default)
+% { ", No.~" }    % (default)
+{ ", no.~" }
 
 % number の後に付ける文字列 (英語文献用)
 %
@@ -687,12 +707,14 @@ FUNCTION {bst.number.post}
 % number の前に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.number.pre.jp}
-{ "，第~" }    % (default)
+% { "，第~" }    % (default)
+{ ", no.~" }
 
 % number の後に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.number.post.jp}
-{ "~号" }    % (default)
+% { "~号" }    % (default)
+{ "" }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	in
@@ -708,7 +730,8 @@ FUNCTION {bst.in}
 % page の前に付ける文字列 (複数ページ) (英語文献用)
 %
 FUNCTION {bst.pages.pre}
-{ ", pp." }    % (default)
+% { ", pp." }    % (default)
+{ ", p." }
 
 % page の前に付ける文字列 (英語文献用)
 %
@@ -728,7 +751,8 @@ FUNCTION {bst.page.post}
 % page の前に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.page.pre.jp}
-{ "，pp.~" }    % (default)
+% { "，pp.~" }    % (default)
+{ ", p.~" }
 
 % page の後に付ける文字列 (日本語文献用)
 %
@@ -1727,7 +1751,7 @@ FUNCTION {format.names}
 %  	    { s is.kanji.str$
  	    { is.kanji.entry
  		{ bst.and.jp  * t * }
- 		{ ", " * t * }
+ 		{ "; " * t * }
 	      if$
 	    }
 	    { t "others" =
