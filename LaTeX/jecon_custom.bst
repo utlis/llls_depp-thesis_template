@@ -3287,10 +3287,12 @@ FUNCTION {inproceedings}
   format.title "title" output.check.nocomma
 
   format.in.ed.booktitle "booktitle" output.check.nocomma
+	format.address output.nocomma
+	month output.nocomma
+	format.organization output.nocomma
   format.bvolume output.nocomma
   format.number.series output.nocomma
   format.pages output.nocomma
-  output.address.organization.publisher
 
   bst.year.position #0 = not
     { format.date output.nocomma }
