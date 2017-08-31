@@ -561,7 +561,8 @@ FUNCTION {bst.book.pre}
 % book の title 後に付ける文字列 (英語文献用)
 %
 FUNCTION {bst.book.post}
-{ "}" }    % (default)
+% { "}" }    % (default)
+{ "}." }
 
 % book の title 前に付ける文字列 (日本語文献用)
 %
@@ -653,7 +654,8 @@ FUNCTION {bst.edition.pre}
 % edition の後に付ける文字列 (英語文献用)
 %
 FUNCTION {bst.edition.post}
-{ " edition" }    % (default)
+% { " edition" }    % (default)
+{ " ed." }
 
 % edition の前に付ける文字列 (日本語文献用)
 %
@@ -663,7 +665,8 @@ FUNCTION {bst.edition.pre.jp}
 % edition の前に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.edition.post.jp}
-{ "~版" }    % (default)
+% { "~版" }    % (default)
+{ "~版, " }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	volume
@@ -836,12 +839,14 @@ FUNCTION {bst.address.post.jp}
 % publisher の前に付ける文字列 (英語文献用)
 %
 FUNCTION {bst.publisher.pre}
-{ ": " }    % (default)
+% { ": " }    % (default)
+{ ", " }
 
 % publisher の後に付ける文字列 (英語文献用)
 %
 FUNCTION {bst.publisher.post}
-{ "" }    % (default)
+% { "" }    % (default)
+{ ", " }
 
 % publisher の前に付ける文字列 (日本語文献用)
 %
@@ -872,7 +877,7 @@ FUNCTION {bst.series.post}
 %
 FUNCTION {bst.series.pre.jp}
 % { "，" }    % (default)
-{ ", (" }
+{ " (" }
 
 % series の後に付ける文字列 (日本語文献用)
 %
@@ -2318,8 +2323,8 @@ FUNCTION {format.book.pages}
 { pages empty$
     { "" }
     { is.kanji.entry
-        { ", " pages convert.num.pages * "p." * }
-        { bst.pages.pre pages * bst.pages.post * }
+        { ", " * pages convert.num.pages * "p." * }
+        { ", " * pages * "p. " * }
       if$
     }
   if$
@@ -2396,8 +2401,8 @@ FUNCTION {format.number.series}
 	    }
 	    % series is not empty.  日本語と英語で順序逆にする。
 	    { is.kanji.entry
- 	        { bst.series.pre.jp series convert.num * bst.series.post.jp *
-		  bst.number.pre.jp * number convert.num * bst.number.post.jp * }
+ 	        { "," * bst.series.pre.jp series convert.num *
+		  ", " * number convert.num * bst.number.post.jp * bst.series.post.jp * }
 		{ bst.in bst.series.pre * series * bst.series.post *
 		  bst.number.pre * number * bst.number.post * }
 	      if$
@@ -3157,6 +3162,8 @@ FUNCTION {book}
   if$
   format.book "title" output.check.nocomma
 
+  format.edition output.nocomma
+
   output.publisher.address
 
   bst.year.position #0 = not
@@ -3168,8 +3175,6 @@ FUNCTION {book}
 
   format.bvolume output.nocomma
   format.number.series output.nocomma
-
-  format.edition output.nocomma
 
   format.hoyakusho output.nocomma
   format.url output.nocomma
