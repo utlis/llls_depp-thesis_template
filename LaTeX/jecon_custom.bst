@@ -562,7 +562,7 @@ FUNCTION {bst.book.pre}
 %
 FUNCTION {bst.book.post}
 % { "}" }    % (default)
-{ "}." }
+{ "}. " }
 
 % book の title 前に付ける文字列 (日本語文献用)
 %
@@ -587,17 +587,20 @@ FUNCTION {bst.btitle.pre}
 % booktitle の後に付ける文字列 (英語文献用)
 %
 FUNCTION {bst.btitle.post}
-{ "}" }    % (default)
+% { "}" }    % (default)
+{ "}. " }
 
 % booktitle の前に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.btitle.pre.jp}
-{ "『" }    % (default)
+% { "『" }    % (default)
+{ "" }
 
 % booktitle の後に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.btitle.post.jp}
-{ "』" }    % (default)
+% { "』" }    % (default)
+{ ". " }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	journal name
@@ -655,7 +658,7 @@ FUNCTION {bst.edition.pre}
 %
 FUNCTION {bst.edition.post}
 % { " edition" }    % (default)
-{ " ed." }
+{ " ed.," }
 
 % edition の前に付ける文字列 (日本語文献用)
 %
@@ -727,7 +730,8 @@ FUNCTION {bst.number.post.jp}
 % In (英語文献用)
 %
 FUNCTION {bst.in}
-{ " in " }    % (default)
+% { " in " }    % (default)
+{ "" }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	page
@@ -3251,15 +3255,17 @@ FUNCTION {incollection}
   format.title "title" output.check.nocomma
 
   format.in.ed.booktitle "booktitle" output.check.nocomma
+  format.edition output.nocomma
+
   format.bvolume output.nocomma
   output.address.organization.publisher
-  format.edition output.nocomma
-  format.chapter.pages output.nocomma
 
   bst.year.position #0 = not
     { format.year "year" output.check.nocomma }
     'skip$
   if$
+
+  format.chapter.pages output.nocomma
 
   format.url output.nocomma
   format.doi output.nocomma
