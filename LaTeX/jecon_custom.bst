@@ -842,6 +842,29 @@ FUNCTION {bst.month.post.jp}
 { "月" }    % (default)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	month (conference 用)
+
+% month の前に付ける文字列 (英語文献用)
+%
+FUNCTION {bst.cmonth.pre}
+{ ", " }    % (default)
+
+% month の後に付ける文字列 (英語文献用)
+%
+FUNCTION {bst.cmonth.post}
+{ ". " }    % (default)
+
+% month の前に付ける文字列 (日本語文献用)
+%
+FUNCTION {bst.cmonth.pre.jp}
+{ "，" }    % (default)
+
+% month の後に付ける文字列 (日本語文献用)
+%
+FUNCTION {bst.cmonth.post.jp}
+{ ". " }    % (default)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	address
 % address の前に付ける文字列 (英語文献用)
 %
@@ -861,7 +884,8 @@ FUNCTION {bst.address.pre.jp}
 % address の後に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.address.post.jp}
-{ "" }    % (default)
+% { "" }    % (default)
+{ ", " }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	publisher
@@ -935,7 +959,8 @@ FUNCTION {bst.organization.pre.jp}
 % organization の後に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.organization.post.jp}
-{ "" }    % (default)
+% { "" }    % (default)
+{ ", " }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	school
@@ -2631,6 +2656,18 @@ FUNCTION {format.month}
   if$
 }
 
+%%% month の整形 (conference)
+FUNCTION {format.cmonth}
+{ month empty$
+    { "" }
+    { is.kanji.entry
+        { bst.cmonth.pre.jp month * bst.cmonth.post.jp * }
+        { bst.cmonth.pre month * bst.cmonth.post * }
+      if$
+    }
+  if$
+}
+
 %%% year と month を一緒に処理するためのもの。
 FUNCTION {format.date}
 { is.kanji.entry
@@ -3338,17 +3375,19 @@ FUNCTION {inproceedings}
 
   format.in.ed.booktitle "booktitle" output.check.nocomma
 	format.address output.nocomma
-	month output.nocomma
+	format.cmonth output.nocomma
 	format.organization output.nocomma
   format.bvolume output.nocomma
   format.number.series output.nocomma
-  format.pages output.nocomma
+
+	format.publisher output.nocomma
 
   bst.year.position #0 = not
     { format.date output.nocomma }
     { format.month output.nocomma }
   if$
 
+  format.pages output.nocomma
   format.url output.nocomma
   format.doi output.nocomma
 
