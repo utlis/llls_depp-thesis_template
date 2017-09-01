@@ -551,6 +551,32 @@ FUNCTION {bst.title.post.jp}
 { ". " }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% title (incollectionとconference用)
+
+% title の前に付ける文字列 (英語文献用)
+%
+FUNCTION {bst.ctitle.pre}
+{ "``" }    % (default)
+
+% title の後に付ける文字列 (英語文献用)
+%
+FUNCTION {bst.ctitle.post}
+% { ",''" }    % (default)
+{ "''. " }
+
+% title の前に付ける文字列 (日本語文献用)
+%
+FUNCTION {bst.ctitle.pre.jp}
+% { "「" }    % (default)
+{ "``" }
+
+% title の後に付ける文字列 (日本語文献用)
+%
+FUNCTION {bst.ctitle.post.jp}
+% { "」，" }    % (default)
+{ "''. " }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	book 用 title
 
 % book の title 前に付ける文字列 (英語文献用)
@@ -2100,6 +2126,30 @@ FUNCTION {format.misc.title}
   if$
 }
 
+%%% incollection の title の処理
+FUNCTION {format.incollection.title}
+{ title empty$
+    { "" }
+    { title is.kanji.str$
+      { bst.ctitle.pre.jp title * bst.ctitle.post.jp * }
+      { bst.ctitle.pre title * bst.ctitle.post * }
+     if$
+    }
+  if$
+}
+
+%%% conference の title の処理
+FUNCTION {format.conference.title}
+{ title empty$
+    { "" }
+    { title is.kanji.str$
+      { bst.ctitle.pre.jp title * bst.ctitle.post.jp * }
+      { bst.ctitle.pre title * bst.ctitle.post * }
+     if$
+    }
+  if$
+}
+
 % - を -- にする関数 (pages 用)
 FUNCTION {n.dashify}
 { 't :=
@@ -3252,7 +3302,7 @@ FUNCTION {incollection}
     { format.year "year" output.check.nocomma }
     'skip$
   if$
-  format.title "title" output.check.nocomma
+  format.incollection.title "title" output.check.nocomma
 
   format.in.ed.booktitle "booktitle" output.check.nocomma
   format.edition output.nocomma
@@ -3284,7 +3334,7 @@ FUNCTION {inproceedings}
     { format.year "year" output.check.nocomma }
     'skip$
   if$
-  format.title "title" output.check.nocomma
+  format.conference.title "title" output.check.nocomma
 
   format.in.ed.booktitle "booktitle" output.check.nocomma
 	format.address output.nocomma
