@@ -689,7 +689,7 @@ FUNCTION {bst.edition.post}
 % edition の前に付ける文字列 (日本語文献用)
 %
 FUNCTION {bst.edition.pre.jp}
-{ "，第~" }    % (default)
+{ "第~" }    % (default)
 
 % edition の前に付ける文字列 (日本語文献用)
 %
