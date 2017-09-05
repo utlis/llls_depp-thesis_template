@@ -2402,8 +2402,8 @@ FUNCTION {format.book.pages}
 { pages empty$
     { "" }
     { is.kanji.entry
-        { ", " * pages convert.num.pages * "p." * }
-        { ", " * pages * "p. " * }
+        { ", " pages convert.num.pages * "p." * }
+        { ", " pages * "p. " * }
       if$
     }
   if$
