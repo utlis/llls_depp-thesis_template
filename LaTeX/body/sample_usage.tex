@@ -1,4 +1,4 @@
-%! TEX root = ../thesis_main_sample.tex
+%!TEX root = ../thesis_main_sample.tex
 
 \chapter{テンプレート使用方法}
 	\label{chp:readme}
@@ -13,37 +13,38 @@
 			\item thesis\_guideline.pdf: この要綱のファイル
 			\item \textbf{LaTeX/}
 			\begin{itemize}
-				\item thesis\_main.tex: 自分の論文はこのファイルに書くとよい
-				\item thesis\_main\_guideline.tex: この要綱の tex ソースファイル
-				\item ThesisTemp.bib: BibTeXによる参考文献リストファイル
+				\item thesis\_main.tex: このファイルに自分の論文を書く
+				\item thesis\_main\_sample.tex: この要綱の tex ソースファイル（参考・\TeX{} 環境のテスト用）
+				\item sample\_bibliography.bib: この要綱で用いたBibTeXによる参考文献リストファイル
 				\item jecon\_custom.bst: BibTeX用の参考文献スタイルファイル
 				\item latexmkrc: latexmkによる自動コンパイルの設定ファイル
 				\item lllsdepp.sty: この要綱のスタイルファイル
-				\item \textbf{fig/}: 画像ファイルの格納場所
+				\item \textbf{figure/}: 画像ファイルの格納場所
 					\begin{itemize}
 						\item Lenna.png: サンプル画像（\cref{fig:sample}）
-						\item sample\_fig.xbb: サンプル画像用バウンディンボックスファイル
-							\footnote{画像ファイルの大きさについて記述されている。}
 					\end{itemize}
 				\item \textbf{body/}: 本文のtexソースを置く場所
 					\begin{itemize}
-						\item sample\_guideline.tex
-						\item sample\_usage.tex
+						\item sample\_guideline.tex: \cref{chp:guideline} のソースファイル
+						\item sample\_usage.tex: \cref{chp:readme}のソースファイル
 					\end{itemize}
 				\item \textbf{appendix/}: 付録のtexソースを置く場所
 					\begin{itemize}
 						\item sample\_appendix.tex
 					\end{itemize}
 			\end{itemize}
-			\item \textbf{Word/}: Word版テンプレート
+			\item \textbf{Office/}: Officeソフトウェア向けテンプレート集
 				\begin{itemize}
-					\item thesis.docx: Wordを用いる場合はこのファイルに執筆
+					\item msword\_template-master.docx: Word\textsuperscript{\textregistered}を用いる場合はこのファイルに執筆（修士論文用）
+					\item msword\_template-bachelor.docx: Word\textsuperscript{\textregistered}を用いる場合はこのファイルに執筆（卒業論文用）
+					\item libreoffice\_template-master.docx: LibreOffice を用いる場合はこのファイルに執筆（修士論文用）
+					\item libreoffice\_template-bachelor.docx: LibreOffice を用いる場合はこのファイルに執筆（卒業論文用）
 				\end{itemize}
 		\end{itemize}
 
 		\noindent
-		執筆に用いるソフトウェアに応じて、\LaTeX 版か Word \copyright 版を選択せよ。
-		以下の節では、それぞれのフォーマットの使い方を説明する。
+		執筆に用いるソフトウェアに応じて、\LaTeX{} 版か Office 版を選択せよ。
+		以下の節では、それぞれのフォーマットについて、その使い方を説明する。
 
 	\section{LaTeX}
 		\label{sec:latex}
@@ -129,11 +130,11 @@
 					\item[Inline] 　\\
 						\verb|\textcquote[<ページ番号;例: p. 19>]{<引用キー;例: sawada>}{...}|
 					\item[Block] 　
-					\begin{verbatim}
-						\begin{displaycquote}[<ページ番号;例: p. 74>]{<引用キー;例: sawada>}
-							...
-						\end{displaycquote}
-					\end{verbatim}
+						\begin{verbatim}
+							\begin{displaycquote}[<ページ番号;例: p. 74>]{<引用キー;例: sawada>}
+							    ...
+							\end{displaycquote}
+						\end{verbatim}
 				\end{description}
 
 				\noindent
@@ -161,44 +162,62 @@
 				したがって執筆者は \texttt{Mendeley} を用いた文献管理を行いつつ、そのデスクトップアプリケーションから出力したBibTeXファイル
 				\footnote{詳しい方法は公式ドキュメントなどを参照されたい
 				(\url{https://blog.mendeley.com/2011/10/25/howto-use-mendeley-to-create-citations-using-latex-and-bibtex/})。}
-				を本テンプレートの\texttt{ThesisTemp.bib}と同じ階層に置くことで、快適な参考文献処理が行えるのである。
+				を本テンプレートの\texttt{sample\_bibliography.bib}と同じ階層に置くことで、快適な参考文献処理が行えるのである。
+				% TODO: should be update line number according to jecon_custom
 				ただし、BibTeXファイルをその他の方法で独自に管理していて日本人著者の姓名が逆に表示される場合は、\verb|jecon_custom.bst|の168行目から始まるオプションを0に変更せよ。
 
-	\section{Word}
-		\label{word}
+	\section{Office}
+		\label{sec:office}
 
-		Microsoft Office Word 版のテンプレートはファイル形式として \texttt{.doc}\textbf{x}を採用した。
-		\texttt{.doc} しか使えない Office 2003 はサポートが2014年で既に切れているので、執筆に用いないこと。
+		Officeソフトウェア向けにもテンプレートを用意した。
+		対応しているソフトウェアは、Microsoft Office Word \textsuperscript{\textregistered} とLibreOffice \footurl{https://www.libreoffice.org} である。
+
+		Word \textsuperscript{\textregistered} 版のテンプレートはファイル形式として \texttt{.doc}\textbf{x}を採用した。
 		本テンプレートはOffice 2016以上のバージョンが推奨である。
-		それ未満のバージョンにおける動作不良は一切サポートしない。
+		それ未満のバージョンにおけるテンプレートの動作不良は一切サポートしない。
+
+		LibreOffice版はバージョン5.3.4で動作確認している。
+		それ以上のバージョンであれば動作に大きな問題はないと考えられる。
+
+		ただしOfficeテンプレートを使う場合は、\LaTeX{}版と違って以下の点が不便であることから、あまり推奨しない。
+		執筆には\LaTeX{}版を使うことを強く推奨する。
+
+		\begin{itemize}
+			\item ソースコードのコメントに相当する機能がないので、たとえば2種類の文のどちらがいいか考えるときに不便
+			\item \LaTeX{}では改行1つは無視されるので、たとえばソースコード1行に1文を割り当てると行の入れ替えがしやすくなるが、WYSIWYGなソフトではそう簡単にいかない
+			\item 目次はボタンを手動で押すなどして、半自動更新せねばならない
+			% \item WYSIWYGなので論理的な構成を意識しづらい\footnote{いま自分が「節」の中身を書いているのか「項」を書いているのか、はたまた「引用」をしているのか通常の本文なのか、という区別が見た目からわかりにくくなる。\LaTeX{}ではソースコードのコマンドからそれが識別できるので、文書の「論理構造」を意識しながら書ける。これが実は\LaTeX{}を使って論文を書くべき本当の理由かもしれない。}
+			\item 章ごとの改ページを手作業で行わなければならない
+			\item テキストファイルではないので、\texttt{git}などのバージョン管理システムを用いた編集履歴管理ができない
+			\item 便利なテキストエディタを使えないので、非効率なGUIをポチポチと操作せねばならない
+			\item 原稿を書きたいと思ってもソフトの立ち上げが遅く、その間に何を書きたかった忘れてしまいやすい
+			\item Officeソフトウェアは長大なテキストの扱いが不安定で、論文が終盤に差し掛かるほどクラッシュしやすく、原稿が失われやすい
+			\item 章ごとにファイルを分割して管理したくても、PDF出力・印刷は別々に行う必要があり、煩雑になる\footnote{逆に\LaTeX{}では章ごとのPDF出力がしにくく感じるかもしれないが、\texttt{docmute}というパッケージを使うと解決できる。}
+			\item 本テンプレートの管理者はもっぱら\LaTeX{}を利用しているので、Office版の不具合対応が遅れやすい
+			\item なぜかどんなに工夫しても\LaTeX{}で出力した論文より美しい組版を実現することができない
+		\end{itemize}
 
 		\subsection{表紙}
 			\label{sub:titlepage_w}
 
 			まず表紙に執筆者情報を記入する。
-			提出年度、及び執筆する学位論文の種類に応じて「修士論文」「卒業論文」を選んで記入せよ。
-			次に論文題目を記述する。
-			所属は大学院か学部かでそれぞれ異なるので、適する方の記述方法を\cref{chp:guideline}に沿って記入すること。
+			記入すべき情報は修士論文か卒業論文かでそれぞれ異なるため、テンプレートファイルを正しく選ぶ。
+			最初の行の\emph{提出年度}を入力し、次に\emph{論文題目}を記述する。
 			名前、学籍番号、指導教員も忘れずに記入する。
 
-		\subsection{スタイル}
-			\label{sub:style_w}
 
-			本文に適用するスタイルは、スタイル選択から適切なものを選ぶこと。
-			「見出し1--3」が章・節・項に対応しているほか、「ブロック引用」を用意している。
-
-		\subsection{執筆}
+		\subsection{執筆に有用な機能と注意点}
 			\label{sub:writing_w}
 
-			章の最後には必ず改ページを挿入し、次の章が新しいページから始まるようにせよ。
-			適宜目次は手動で更新してほしい。
+			章の最後には必ず「改ページ」を挿入し、次の章が新しいページから始まるようにせよ。
+			各種目次は手動で更新する必要があるので、章・節・項や図表を挿入したあとは「目次を更新」を実行するようにせよ。
 
+			\subsection{スタイル}
+				\label{sub:style_w}
 
-		\subsection{Tips}
-			\label{tips}
-
-			以下、あまり知られていないWordの使い方を列挙する。
-			詳しい使い方は各自調べてほしい。
+				本文に適用するスタイルは、スタイル選択から適切なものを選ぶこと。
+				「見出し1--3」が章・節・項に対応しているほか、ブロック引用のための「引用」スタイルを用意している。
+				見出しのタイトルを入力したあと、そのタイトルを選択し、「見出し1--3」のいずれかを選ぶと、自動的にHarvard方式の番号が入力される。
 
 			\paragraph{図表番号の付け方}
 
@@ -207,5 +226,5 @@
 
 			\paragraph{先行研究リストの作り方}
 
-				文献管理ソフトの\texttt{Mendeley}にはWord向けに参考文献を自動生成する補助アプリが搭載されている。
+				文献管理ソフトの\texttt{Mendeley}にはWord/LibreOffice向けに参考文献を自動生成する補助アプリが搭載されている。
 				\texttt{CiNii}その他からインポートした論文・書籍を引用するときに使用するとよい。
