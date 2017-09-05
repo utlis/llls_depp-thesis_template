@@ -32,4 +32,5 @@ if ($^O eq 'MSWin32') {
   } else {
     $pdf_previewer = 'xdg-open';
   }
+$bibtex_use = 2;  # to remove .bbl files in `-C` option
 }
