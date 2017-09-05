@@ -1,3 +1,10 @@
+% sist02.bst: SIST02 準拠 BibTeX style file.
+%
+% 東京大学図書館情報学研究室が jecon.bst v4 を元に SIST02 に準拠させた。
+% ただし、Journal Articles, Books, Chapters in Books, Conference Papers　の4種類だけに対応している。
+% XeLaTeX などへの対応のためには jecon.bst v5 を merge する必要がある。
+%
+% ===
 % jecon.bst: 経済学用 BibTeX style file.
 %
 % First-written:       <2002/11/03>
