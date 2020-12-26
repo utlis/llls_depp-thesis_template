@@ -2,6 +2,9 @@
 %東京大学大学院教育学研究科生涯学習基盤経営コース　修士論文向け
 %
 %更新履歴:
+%20/12/26 Ver 0.22
+%ページ番号等を図書・独立論文の規約に従わせる修正。（修正者：影浦）
+%多少アドホックな処置あり。
 %14/2/5 Ver 0.2
 %章ごとに改ページする設定に変更。このため，Chapterコマンドを追加。
 %12/1/12 Ver 0.12
@@ -45,12 +48,24 @@
 指導教員：東大太郎　教授
 \end{center}
 \normalsize
+\newpage
+\thispagestyle{empty}
+　
+\newpage
 %---------------------------------目次エリア-------------------------------%
+\pagenumbering{roman}
+\setcounter{page}{0}
+
 \thispagestyle{empty}
 \tableofcontents
+\newpage
 %---------------------------------本文エリア-------------------------------%
 
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
 \chapter{はじめに}
+\thispagestyle{empty}
 \section{はじめに}
 この文章は教育行政コースの卒業論文，の\LaTeX{}版テンプレートファイルです。
 この文章自体が執筆要領を兼ねております。このファイルをそのまま使用して論
@@ -69,6 +84,7 @@ subsubsection命令を使うことで同等の出力が得られることから�
 を使って作成を行ってください。
 
 \chapter{全体的なレイアウトについて}
+\thispagestyle{empty}
 
 \section{本テンプレートファイルについて}
 \subsection{本テンプレートファイルの構造}
@@ -503,6 +519,7 @@ Web上のリソースについては，書誌情報の最後に``入手先URL, �
 
 %-----------------------------参考文献記述エリア---------------------------%
 \begin{thebibliography}{10}
+\thispagestyle{empty}
  \bibitem{澤田}澤田昭夫. 『論文のレトリック』 
 	 講談社学術文庫, 講談社, 1983, 330p.
 \end{thebibliography}
