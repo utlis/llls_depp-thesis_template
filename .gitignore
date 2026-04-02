@@ -1,5 +1,11 @@
 ### https://raw.github.com/github/gitignore/8512c772d731ce256f81da49e627d293274fab8a/TeX.gitignore
 
+## Mac
+.DS_Store
+
+## User
+.latexmkrc
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
